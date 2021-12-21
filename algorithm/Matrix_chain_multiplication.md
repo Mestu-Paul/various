@@ -1,4 +1,5 @@
 <h3>Algorithm: Matrix Chain Multiplication</h1>
+<b>Using Iterative DP (not recursive)</b>
 
 ```c++
 #include<bits/stdc++.h>
