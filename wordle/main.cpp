@@ -15,6 +15,7 @@ int main(){
             cout<<"Congratulations!!!"<<endl;
             return 0;
         }
+        set_ignore(word);
         hints=(hints|anyHints(result));
         if(hints==false){
             next_word(all_words,result,word);
@@ -29,3 +30,9 @@ int main(){
         cout<<word<<" Enter its value "<<endl;
     }
 }
+/** **elder**
+focal
+altar
+ulnar
+blear
+**/

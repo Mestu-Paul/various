@@ -2,7 +2,9 @@
 #include<fstream>
 using namespace std;
 map<char,bool>ache,ignored;
+map<string,bool>igonre_word;
 vector<pair<int,char>>val_with_pos,not_fixed;
+bool isItIgnorable(string s);
 bool isUnique(string s){
     set<char>st;
     for(auto to:s)st.insert(to);
@@ -25,8 +27,11 @@ string random_word(){
     vector<string>vs;
     read_words(vs,"unique.txt");
     srand(time(0));
-    int pos = rand()%vs.size();
-    return vs[pos];
+    while(1){
+        int pos = rand()%vs.size();
+        if(isItIgnorable(vs[pos])==false)
+            return vs[pos];
+    }
 }
 bool result_checker(string s){
     if(s.size()!=5)return false;
@@ -54,6 +59,7 @@ bool jaraThakarKothaTaraAche(string s){
     return false;
 }
 bool isItIgnorable(string s){
+    if(igonre_word[s])return true;
     for(auto to:s){
         if(ignored[to])return true;
     }
@@ -122,4 +128,7 @@ int letter_find(){
 void all_clear(){
     ache.clear(),ignored.clear();
     val_with_pos.clear(),not_fixed.clear();
+}
+void set_ignore(string s){
+    igonre_word[s]=1;
 }
